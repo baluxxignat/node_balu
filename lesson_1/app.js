@@ -1,72 +1,80 @@
-// const  greet = require('./dir/file1');
-//
-// greet.greeting();
-//
-// console.log(__dirname);
-// console.log(__filename);
-
 const  fs = require('fs');
 const  path = require('path');
 const  util = require('util');
 
-const newPath = path.join( __dirname, 'newdir', 'newFile.txt');
-//const filePath = path.join(dirToRead, item);
-
-// Promisifi
-// const  appendPromise = util.promisify(fs.appendFile);
-// appendPromise(newPath, 'SOME NEW TEXT \n').catch(reason => {
-//     console.log(reason);
-// })
-
-//STREAM
-
-// const  readStream = fs.createReadStream()
+//const newPath = path.join( __dirname, 'newdir', 'newFile.txt');
 
 
+const users = [
+    {name: "Olya", gender: "female", age: 21},
+    {name: "Valya", gender: "female", age: 22},
+    {name: "Natasha", gender: "female", age: 23},
+    {name: "Lena", gender: "female", age: 14},
+    {name: "Ulya", gender: "female", age: 15},
+    {name: "Vasya", gender: "male", age: 21},
+    {name: "Petya", gender: "male", age: 22},
+    {name: "Sasha", gender: "male", age: 23},
+    {name: "Seryu", gender: "male", age: 14},
+    {name: "Vitalik", gender: "male", age: 15}
+]
+
+//console.log(__dirname);
+
+const  mkDirPath = path.join(__dirname, 'dir', 'manOlder20')
+const  mkDirPath2 = path.join(__dirname, 'dir', 'manYounger20')
+const  mkDirPath3 = path.join(__dirname, 'dir', 'womanOlder20')
+const  mkDirPath4 = path.join(__dirname, 'dir', 'womanYounger20')
+
+fs.mkdir(mkDirPath, {recursive: true}, err => {
+    err && console.log(err);
+
+    fs.mkdir(mkDirPath2, {recursive: true}, err => {
+        console.log(err);
+
+        fs.mkdir(mkDirPath3, {recursive: true}, err => {
+            console.log(err);
+            fs.mkdir(mkDirPath4, {recursive: true}, err => console.log(err));
+        });
+    });
+
+});
 
 
 
 
 
-//console.log(newPath);
-//
-// fs.writeFile(newPath, 'data mast be here', err => console.log(err) );
-//
-// fs.appendFile(newPath, '\n new data\n', err => console.log(err));
-//
-// const mkDirPath = path.join(__dirname, 'dir1', 'dir2', 'dir3', 'dir55')
-//
-// fs.mkdir (mkDirPath, {recursive: true},err => console.log(err));
 
 
-// fs.readFile(newPath, ((err, data) => {
-    // if (err) {
-    //     console.log(err);
-    //     return
-    // }
-    // console.log(data.toString());
+users.forEach(file => {
+    const { age, name, gender } = file;
 
-    // err? console.log(err)  : console.log(data.toString());
-//
-// }))
-//
-//
-//
-// fs.readdir(dirToRead,((err, files) => {
-//     if(err) {
-//         console.log(err);
-//         return
-//     }
-//     //console.log(files);
-//
-//     files.forEach(item => {
-//
-//         fs.stat(filePath, ((err1, stats) => {
-//             console.log(stats.isFile());
-//             console.log(stats.isDirectory());
-//             console.log(stats.size);
-//             console.log('___________________');
-//         }))
-//     })
-//
-// }))
+    if (age < 20 && gender === 'male' ) {
+        fs.writeFile (path.join(mkDirPath2, `${name}.txt`), JSON.stringify(file), err => err && console.log(err));
+        return;
+    }
+    if (age > 20 && gender === 'male') {
+        fs.writeFile (path.join(mkDirPath, `${file.name}.txt`), JSON.stringify(file), err => {
+            err && console.log(err);
+            return;
+        });
+    }
+    if (age > 20 && gender === 'female') {
+        fs.writeFile (path.join(mkDirPath3, `${file.name}.txt`), JSON.stringify(file), err => {
+            err && console.log(err);
+            return;
+        });
+    }
+    fs.writeFile (path.join(mkDirPath4, `${file.name}.txt`), JSON.stringify(file), err => {
+        err && console.log(err);
+        return;
+    });
+
+})
+
+
+
+
+// ], вам потрібно написати метод який створює файлики - де назва файлику - це імя вашого юзера (наприклад - Olya.txt),
+// вміст це сам ваш юзер - { name: 'olya', gender: 'female', age: 20 }
+// перед тим створити 4 папки - наприклад - manOlder20, manYounger20, womanOlder20, womanYounger20
+// і розподілити ваших юзерів саме по відповідних папках
