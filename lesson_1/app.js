@@ -1,1 +1,49 @@
-console.log('hello world');
+const path = require('path');
+const fs = require('fs');
+
+// path to folders creating
+const pathTo1800 = path.join(__dirname, '1800');
+const pathTo2000 = path.join(__dirname, '2000');
+//console.log(pathTo1800, pathTo2000);
+
+
+
+// trying to read folders content
+fs.readdir(pathTo1800, ((err, files) => {
+    if (err) {
+        console.log(err);
+        return;
+    }
+
+    files.forEach(item => {
+        const itemPath = path.join(pathTo1800, item);        // all items full path inside folder 1800
+        const newPath = path.join(pathTo2000, item);
+        //console.log(itemPath);                  
+
+        // check tip of included files
+        fs.stat(itemPath, ((err1, stats) => {
+            if (err) {
+                console.log(err);
+                return;
+            }
+
+            if (stats.isFile()) {
+                fs.readFile(itemPath, ((err2, data) => {
+                    if (err) {
+                        console.log(err);
+                        return;
+                    }
+                    let itemToJson = JSON.parse(data);
+                    //console.log(itemToJson);                                    //checking what i got: keys and values
+                    if (itemToJson.gender === 'male') {
+                        fs.rename(itemPath, newPath, err3 => {             //moving items
+                            console.log(err3);
+                        })
+                    }
+
+
+                }))
+            }
+        }))
+    })
+}))
