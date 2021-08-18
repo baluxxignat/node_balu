@@ -6,7 +6,6 @@ const pathTo2000 = path.join(__dirname, '2000');
 //console.log(pathTo1800, pathTo2000);
 
 
-
                                         ////////       MALE   ///////////////////
 
 // trying to read folders content
