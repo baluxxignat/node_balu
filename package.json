@@ -2,10 +2,10 @@
   "name": "node_balu",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "lesson_3/app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "node lesson_3/app.js",
+    "dev": "nodemon lesson_3/app.js"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +23,25 @@
 
   },
   "devDependencies": {
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "eslint": "7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "husky": "4.3.0",
+    "lint-staged": "^11.1.2"
+
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint",
+      "git add"
+    ]
   }
 }
