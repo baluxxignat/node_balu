@@ -1,13 +1,1 @@
-[
-  {"email":"Dimas@gmail.com","password":"12345"},
-  {"email":"Oleg@gmail.com","password":"12345"},
-  {"email":"Semen@gmail.com","password":"12345"},
-  {"email":"Pavlo@gmail.com","password":"12345"},
-  {"email":"Mikola@gmail.com","password":"12345"},
-  {"email":"Anjey@gmail.com","password":"12345"},
-  {"email":"Vasiliy@gmail.com","password":"12345"},
-  {"email":"Maks@gmail.com","password":"12345"},
-  {"email":"Igor@gmail.com","password":"12345"},
-  {"email":"aleksandr.pravo@gmail.com","password":"12345"},
-  {"email":"abc","password":"12345"}
-]
+[{"email":"Dimas@gmail.com","password":"12345"},{"email":"Oleg@gmail.com","password":"12345"},{"email":"Semen@gmail.com","password":"12345"},{"email":"Pavlo@gmail.com","password":"12345"},{"email":"Mikola@gmail.com","password":"12345"},{"email":"Anjey@gmail.com","password":"12345"},{"email":"Vasiliy@gmail.com","password":"12345"},{"email":"Maks@gmail.com","password":"12345"},{"email":"Igor@gmail.com","password":"12345"},{"email":"aleksandr.pravo@gmail.com","password":"12345"},{"email":"abc","password":"12345"},{"email":"fffffff@gmail.com","password":"11111","password2":"11111"},{"email":"htghg@gggg.gmail.com","password":"111","password2":"111111"}]
